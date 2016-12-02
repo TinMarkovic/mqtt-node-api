@@ -1,0 +1,21 @@
+{
+    "name" : "Texas OnCourse Message Queue API",
+    "routes" : [
+        {
+            "route" : "/api/",
+            "method" : "GET",
+            "description" : "Displays this documentation."
+        }, 
+        {
+            "route" : "/api/topics/",
+            "method" : "GET",
+            "description" : "Displays a list of Message Queue topics available."
+        }, 
+        {
+            "route" : "/api/topics/:topic_name",
+            "method" : "POST",
+            "description" : "Receives a JSON body containing a message to be passed to the Message Queue.",
+            "parameters" : { "topic_name" : "Topic of the message." }
+        }
+    ]
+}
