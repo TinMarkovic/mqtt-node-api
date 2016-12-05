@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var mqtt = require('mqtt');
 
-var settings = require('./settings/default'); // TODO: Setup settings overwriting
+var settings = require('./settings/index'); // TODO: Setup settings overwriting
 var api = require('./routes/api');
 
 var app = express();
