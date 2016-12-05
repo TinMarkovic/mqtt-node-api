@@ -11,12 +11,23 @@ var router = express.Router();
 
 var client = mqtt.connect("mqtt://" + settings.broker.host + ":" + settings.broker.port);
 
-app.use(morgan('dev')); // log requests to the console
+app.use(morgan('dev')); // logs requests to console - TODO: improve logging?
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use('/api', api.routing(router, client));
 
-app.listen(settings.application.port); // TODO: Setup nginx tunnel with SSL
-console.log('Listening on port ' + settings.application.port);
+client.on('connect', function () {
+  app.listen(settings.application.port, function(err){ // TODO: Setup nginx tunnel with SSL OR set up HTTPS on Node itself
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log("Listening on port " + settings.application.port); // TODO: Decide whether to emmit connecting to MQ?
+  }); 
+});
+
+client.on('error', function (err) {
+  console.error(err);
+});
