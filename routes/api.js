@@ -1,7 +1,13 @@
 const docsAPIRoot = require('../docs/api-root')
 
 module.exports = {
-  routing : function(router, client){
+  routing : function(router, client, logger){
+
+    router.use(function(req, res, next) {
+      logger.info("Request received: \n Body: ", {"Body:" : req.body},
+                                     "\n Headers: ", {"Headers:" : req.headers});
+      next();
+    });
 
     router.get('/', function(req, res) {
       res.json({ results: [ docsAPIRoot ] }); 

@@ -6,10 +6,8 @@
         "host" : "oidc.tex.extensionengine.com",
         "port" : "1883"
     },
-    "keys" : {
-        "enabled" : true,
-        "private" : "../sslcert/server.key",
-        "certificate" : "../sslcert/server.crt",
-        "encoding" : "utf8"
+    "logger" : {
+        "directory" : "../mqtt-node-api-logs/",
+        "logLevel" : "verbose"
     }
 }

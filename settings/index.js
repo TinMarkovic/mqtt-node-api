@@ -10,7 +10,7 @@ try {
     console.log(`Module "local.js" failed to load. Error: ${e.message}`);
   } else {
     console.log(`Settings file not found, loading default settings.`);
-    config = localConfig;
+    config = defaultConfig;
   }
 }
 
