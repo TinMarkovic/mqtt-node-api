@@ -2,9 +2,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mqtt = require('mqtt');
 var morgan = require('morgan')
-var winston = require('winston'); // Optional: Refactor winston behind a custom class
+var winston = require('winston'); 
 
-var settings = require('./settings/index'); // TODO: Setup settings overwriting
+var settings = require('./settings/index');
 var api = require('./routes/api');
 
 var app = express();
@@ -26,20 +26,20 @@ var logger = new (winston.Logger)({
       level: 'error'
     })
   ]
-}); // TODO: Refactor this into a seperate file
+}); 
 
 app.use(morgan('common', { stream: { write: message => logger.log('verbose', message) }}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use('/api', api.routing(router, client, logger));
+app.use('/api', api.routing(router, client, logger, settings));
 
 client.on('connect', function () {
-  app.listen(settings.application.port, function(err){ // TODO: Setup nginx tunnel with SSL OR set up HTTPS on Node itself
+  app.listen(settings.application.port, function(err){
     if (err) {
       logger.error(err);
       return;
     }
-    logger.info("Listening on port " + settings.application.port); // TODO: Decide whether to emmit connecting to MQ?
+    logger.info("Listening on port " + settings.application.port);
   }); 
 });
 

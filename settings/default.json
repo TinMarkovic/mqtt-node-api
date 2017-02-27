@@ -9,5 +9,7 @@
     "logger" : {
         "directory" : "../mqtt-node-api-logs/",
         "logLevel" : "verbose"
+    },
+    "client_keys" : {
     }
 }

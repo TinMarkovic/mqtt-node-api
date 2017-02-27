@@ -2,6 +2,8 @@
 
 Simple RESTful API for sending messages to the Message Queue.
 
+The API is not available unless the user provides their ID and key combination through a Basic Auth header. The API is used through HTTPS.
+
 ## Routes
 
 ### GET /api/
