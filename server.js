@@ -9,7 +9,7 @@ var api = require('./routes/api');
 
 var app = express();
 var router = express.Router();
-var client = mqtt.connect("mqtt://" + settings.broker.host + ":" + settings.broker.port);
+var client = mqtt.connect(settings.broker);
 
 var logger = new (winston.Logger)({
   transports: [
