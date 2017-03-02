@@ -4,18 +4,27 @@
         {
             "route" : "/api/",
             "method" : "GET",
+            "content-type" : "application/json",
             "description" : "Displays this documentation."
         }, 
         {
             "route" : "/api/topics/",
             "method" : "GET",
+            "content-type" : "application/json",
             "description" : "Displays a list of Message Queue topics available."
         }, 
         {
             "route" : "/api/topics/:topic_name",
             "method" : "POST",
+            "content-type" : "application/json",
             "description" : "Receives a JSON body containing a message to be passed to the Message Queue.",
             "parameters" : { "topic_name" : "Topic of the message." }
+        }, 
+        {
+            "route" : "/api/envelopes",
+            "method" : "POST",
+            "content-type" : "application/json",
+            "description" : "Receives a JSON body with the Caliper standard envelope. The important part is the data array, which will be parsed and all events in it emitted to the backend."
         }
     ]
 }

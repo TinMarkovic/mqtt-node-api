@@ -28,11 +28,6 @@ var logger = new (winston.Logger)({
   ]
 }); 
 
-app.use(morgan('common', { stream: { write: message => logger.log('verbose', message) }}));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use('/api', api.routing(router, client, logger, settings));
-
 client.on('connect', function () {
   app.listen(settings.application.port, function(err){
     if (err) {
@@ -46,3 +41,8 @@ client.on('connect', function () {
 client.on('error', function (err) {
   logger.error(err);
 });
+
+app.use(morgan('common', { stream: { write: message => logger.log('verbose', message) }}));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use('/api', api.routing(router, client, logger, settings));
