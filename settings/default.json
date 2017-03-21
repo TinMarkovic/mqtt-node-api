@@ -1,17 +1,16 @@
 {
-    "application" : {
-        "port" : "8080"
-    },
-    "broker" : {
-        "host" : "oidc.tex.extensionengine.com",
-        "port" : "1883",
-        "username" : "some_username",
-        "password" : "some_password"
-    },
-    "logger" : {
-        "directory" : "../mqtt-node-api-logs/",
-        "logLevel" : "verbose"
-    },
-    "client_keys" : {
-    }
+  "application": {
+    "port": "8080"
+  },
+  "broker": {
+    "host": "localhost",
+    "port": "1883",
+    "username": "some_username",
+    "password": "some_password"
+  },
+  "logger": {
+    "directory": "../mqtt-node-api-logs/",
+    "logLevel": "verbose"
+  },
+  "client_keys": {}
 }
